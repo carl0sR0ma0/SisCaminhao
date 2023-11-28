@@ -63,29 +63,6 @@
   }
   ?>
 
-  <!-- <div id="maintenanceModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeMaintenanceModal()">&times;</span>
-      <h3>Formulário de Manutenção</h3>
-      <form>
-        <label for="truckId">ID do Caminhão:</label>
-        <input type="text" id="truckId" name="truckId" readonly>
-        <label for="maintenanceType">Tipo de Manutenção:</label>
-        <select id="maintenanceType" name="maintenanceType">
-          <option value="troca_oleo">Troca de Óleo</option>
-          <option value="troca_pneu">Troca de Pneu</option>
-          <option value="ajustes_pequenos">Ajustes Pequenos</option>
-          <option value="ajustes_grandes">Ajustes Grandes</option>
-        </select>
-        <label for="observation">Observação:</label>
-        <textarea id="observation" name="observation"></textarea>
-        <label for="nextMaintenanceDate">Próxima Manutenção:</label>
-        <input type="date" id="nextMaintenanceDate" name="nextMaintenanceDate">
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-  </div> -->
-
   <div id="maintenanceModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeMaintenanceModal()">&times;</span>
@@ -95,10 +72,10 @@
         <input type="text" id="truckId" name="truckId" readonly>
         <label for="maintenanceType">Tipo de Manutenção:</label>
         <select id="maintenanceType" name="maintenanceType">
-          <option value="troca_oleo">Troca de Óleo</option>
-          <option value="troca_pneu">Troca de Pneu</option>
-          <option value="ajustes_pequenos">Ajustes Pequenos</option>
-          <option value="ajustes_grandes">Ajustes Grandes</option>
+          <option value="Troca de Óleo">Troca de Óleo</option>
+          <option value="Troca de Pneu<">Troca de Pneu</option>
+          <option value="Ajustes Pequenos">Ajustes Pequenos</option>
+          <option value=">Ajustes Grandes">Ajustes Grandes</option>
         </select>
         <label for="quilometragemNow">Quilometragem:</label>
         <input type="text" id="quilometragemNow" name="quilometragemNow">

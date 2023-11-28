@@ -14,7 +14,7 @@ CREATE TABLE caminhao (
 
 CREATE TABLE historico_abastecimento (
     id_caminhao integer NOT NULL,
-	dt_abastecimento date,
+	dt_abastecimento datetime,
     qtd_litros integer,
     quilometragem double,
     PRIMARY KEY (id_caminhao, dt_abastecimento)
@@ -25,12 +25,12 @@ ALTER TABLE historico_abastecimento
     
 CREATE TABLE historico_manutencao (
     id_caminhao integer NOT NULL,
-    dt_manutencao date,
+    dt_manutencao datetime,
 	tipo VARCHAR(200),
     quilometragem double,
     quilometragem_proxima_troca double,
     dt_proxima_troca date,
-    observacao VARCHAR(200)
+    observacao VARCHAR(200),
     PRIMARY KEY (id_caminhao, dt_manutencao)
 );
 
@@ -38,26 +38,25 @@ ALTER TABLE historico_manutencao
  ADD FOREIGN KEY (id_caminhao) REFERENCES caminhao(id);
 
 DELIMITER $
-
 CREATE TRIGGER Tgr_Abastecimento_Insert AFTER INSERT
 ON historico_abastecimento
 FOR EACH ROW
 BEGIN
-	UPDATE caminhao SET quilometragem =  NEW.quilometragem
+	UPDATE caminhao SET quilometragem_proxima_troca = quilometragem + NEW.quilometragem
 WHERE id = NEW.id_caminhao;
 END$
 
-/* CREATE TRIGGER Tgr_ItensVenda_Delete AFTER DELETE
-ON ItensVenda
+CREATE TRIGGER Tgr_Manutencao_Insert AFTER INSERT
+ON historico_abastecimento
 FOR EACH ROW
 BEGIN
-	UPDATE Produtos SET Estoque = Estoque + OLD.Quantidade
-WHERE Referencia = OLD.Produto;
+	UPDATE caminhao SET quilometragem_proxima_troca = quilometragem + NEW.quilometragem
+WHERE id = NEW.id_caminhao;
 END$
-*/
 DELIMITER ;
 
 INSERT INTO caminhao VALUES (
+    1,
 	'ABC-0001',
     'CAMINHÃO DO IGOR',
     'STRALIS',
@@ -69,6 +68,7 @@ INSERT INTO caminhao VALUES (
 );
 
 INSERT INTO caminhao VALUES (
+    2,
 	'XYZ-0001',
     'CAMINHÃO DO CARLIN',
     'STRALIS',
@@ -81,28 +81,28 @@ INSERT INTO caminhao VALUES (
 
 INSERT INTO historico_abastecimento VALUES (
 	1,
-    STR_TO_DATE('20-09-2023', '%d-%m-%Y'), 
+    '2023-11-28 15:30:00', 
     500,
     1300
 );
 
 INSERT INTO historico_abastecimento VALUES (
 	1,
-    STR_TO_DATE('24-09-2023', '%d-%m-%Y'), 
+    '2023-11-30 15:25:00', 
     600,
     4100
 );
 
 INSERT INTO historico_abastecimento VALUES (
 	2,
-    STR_TO_DATE('20-09-2023', '%d-%m-%Y'), 
+    '2023-11-28 15:30:00', 
     650,
     4200
 );
 
 INSERT INTO historico_abastecimento VALUES (
 	2,
-    STR_TO_DATE('24-09-2023', '%d-%m-%Y'), 
+    '2023-12-21 15:35:00', 
     700,
     6520
 );

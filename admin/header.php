@@ -30,8 +30,8 @@
     <div class="dropdown">
       <a href="#">Historico</a>
       <div class="submenu">
+        <a href="historico-manutencao.php">Manutenção</a>
         <a href="historico-abastecimento.php">Abastecimento</a>
-        <a href="historico-abastecimento.php">Manutenção</a>
       </div>
     </div>
     <a href="#">Contato</a>
