@@ -6,21 +6,8 @@
   <link rel="stylesheet" type="text/css" href="css/header.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
-  <script type="text/javascript" src="../js/lightbox.js"></script>
-  <link rel="stylesheet" href="../css/lightbox.css">
   <link rel="stylesheet" typ="text/css" href="../jquery.superbox.css" media="all">
   <script type="text/javascript" src="../jquery.superbox-min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      $superbox.settings = {
-        closeTxt: "Fechar",
-        loadTxt: "Carregando...",
-        nextTxt: "Next",
-        prevTxt: "Previous"
-      };
-      $.superbox();
-    });
-  </script>
   <?php include "../conexao.php"; ?>
 </head>
 
